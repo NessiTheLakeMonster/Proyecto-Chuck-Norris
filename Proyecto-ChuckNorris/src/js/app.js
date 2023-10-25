@@ -15,18 +15,16 @@ async function obtenerCategorias() {
         }
 
         const data = await response.json();
-        listarTablaCategorias(data)
+        cargarCategorias(data)
 
     } catch (error) {
-        /* console.error(error); */
         console.log('error');
     }
 }
 
 function cargarCategorias(data) {
     var categoria = new Categoria(data);
-    return categoria;
-
+    listarTablaCategorias(categoria.nombre);
 }
 
 function listarTablaCategorias(categoria) {
@@ -44,4 +42,8 @@ function listarTablaCategorias(categoria) {
         fila.appendChild(enlaceCelda);
         tabla.appendChild(fila);
     });
+}
+
+function cargarFrase() {
+    
 }

@@ -4,8 +4,8 @@ export class Categoria {
     }
 }
 
-
-
 export class Frase {
-
+    constructor(nombre) {
+        this.nombre = nombre;
+    }
 }
