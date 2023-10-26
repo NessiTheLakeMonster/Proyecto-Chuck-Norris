@@ -7,7 +7,7 @@ var categoria
 
 obtenerCategorias();
 
-async function obtenerCategorias() {
+export async function obtenerCategorias() {
     try {
         const response = await fetch(apiURL);
         if (!response.ok) {
@@ -22,12 +22,12 @@ async function obtenerCategorias() {
     }
 }
 
-function cargarCategorias(data) {
+export function cargarCategorias(data) {
     var categoria = new Categoria(data);
     listarTablaCategorias(categoria.nombre);
 }
 
-function listarTablaCategorias(categoria) {
+export function listarTablaCategorias(categoria) {
     var tabla = document.getElementById("tablaCategorias");
 
     categoria.forEach(function (categoria) {
@@ -44,6 +44,6 @@ function listarTablaCategorias(categoria) {
     });
 }
 
-function cargarFrase() {
-    
-}
+/* function cargarFrase() {
+
+} */
