@@ -2,10 +2,20 @@ import { Categoria } from "./clases.js";
 import { Frase } from "./clases.js";
 
 const apiURL = 'https://api.chucknorris.io/jokes/categories';
+let apiURLrandom = 'https://api.chucknorris.io/jokes/random';
+
+const btnCategoria = document.getElementById("generarFrase");
 
 var categoria
 
 obtenerCategorias();
+
+btnCategoria.addEventListener('click', function () {
+    localStorage.setItem("categoria", categoriaRandom(categoria));
+    window.location.href = '../src/frase.html'
+});
+
+/* ----------------------------- FUNCIONES ASINCRONAS --------------------------- */
 
 export async function obtenerCategorias() {
     try {
@@ -22,9 +32,16 @@ export async function obtenerCategorias() {
     }
 }
 
+/* ---------------------------------- FUNCIONES --------------------------------- */
+
 export function cargarCategorias(data) {
     var categoria = new Categoria(data);
     listarTablaCategorias(categoria.nombre);
+}
+
+export function categoriaRandom(categoria) {
+    var random = Math.floor(Math.random() * categoria.length);
+    return categoria[random];
 }
 
 export function listarTablaCategorias(categoria) {
@@ -35,8 +52,12 @@ export function listarTablaCategorias(categoria) {
 
         var enlaceCelda = document.createElement("td");
         var enlace = document.createElement("a");
-        enlace.href = '../frase.html';
+        enlace.href = '../src/frase.html';
         enlace.textContent = categoria;
+
+        enlace.addEventListener('click', function() {
+            localStorage.setItem("categoria", categoria);
+        })
 
         enlaceCelda.appendChild(enlace);
         fila.appendChild(enlaceCelda);
@@ -44,6 +65,3 @@ export function listarTablaCategorias(categoria) {
     });
 }
 
-/* function cargarFrase() {
-
-} */
