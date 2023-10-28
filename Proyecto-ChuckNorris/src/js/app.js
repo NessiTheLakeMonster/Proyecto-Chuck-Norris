@@ -1,22 +1,20 @@
 import { Categoria } from "./clases.js";
-import { Frase } from "./clases.js";
 
+// URL de la API -------------------------------------------------------------
 const apiURL = 'https://api.chucknorris.io/jokes/categories';
-let apiURLrandom = 'https://api.chucknorris.io/jokes/random';
 
+// Elementos HTML -------------------------------------------------------------
 const btnCategoria = document.getElementById("generarFrase");
 
 var categoria
 
-obtenerCategorias();
-
+// Evento del boton para generar una frase -------------------------------------
 btnCategoria.addEventListener('click', function () {
-    /* localStorage.setItem("categoria", 'none'); */
+    localStorage.clear();
     window.location.href = '../src/frase.html'
 });
 
-/* ----------------------------- FUNCIONES ASINCRONAS --------------------------- */
-
+// Funciones asíncronas para obtener las categorías --------------------------
 export async function obtenerCategorias() {
     try {
         const response = await fetch(apiURL);
@@ -32,8 +30,7 @@ export async function obtenerCategorias() {
     }
 }
 
-/* ---------------------------------- FUNCIONES --------------------------------- */
-
+// Funciones para cargar las categorías ---------------------------------------
 export function cargarCategorias(data) {
     var categoria = new Categoria(data);
     listarTablaCategorias(categoria.nombre);
@@ -68,3 +65,5 @@ export function listarTablaCategorias(categoria) {
     });
 }
 
+// Ejectuar la función para obtener las categorías ----------------------------
+obtenerCategorias();
