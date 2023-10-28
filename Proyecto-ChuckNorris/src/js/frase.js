@@ -54,7 +54,7 @@ export function cargarCategorias() {
 
 export function cargarFrase(data) {
     var frase = new Frase(data);
-    
+
     if (data.categories != "") { // Si la frase tiene categoría la muestra
         catHTML.textContent = "Categoria: " + data.categories
     }
