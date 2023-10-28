@@ -11,7 +11,7 @@ var categoria
 obtenerCategorias();
 
 btnCategoria.addEventListener('click', function () {
-    localStorage.setItem("categoria", categoriaRandom(categoria));
+    /* localStorage.setItem("categoria", 'none'); */
     window.location.href = '../src/frase.html'
 });
 
@@ -40,8 +40,11 @@ export function cargarCategorias(data) {
 }
 
 export function categoriaRandom(categoria) {
-    var random = Math.floor(Math.random() * categoria.length);
-    return categoria[random];
+    categoria.forEach(function (categoria) {
+        var random = Math.floor(Math.random() * categoria.length);
+        categoria = categoria[random];
+    });
+    console.log(categoria);
 }
 
 export function listarTablaCategorias(categoria) {

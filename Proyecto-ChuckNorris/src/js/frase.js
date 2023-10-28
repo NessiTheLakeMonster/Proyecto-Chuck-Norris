@@ -10,13 +10,12 @@ var catHTML = document.getElementById('cat');
 
 export function cargarCategorias() {
     var categoria = localStorage.getItem("categoria");
-    console.log(categoria);
-    if (categoria != "none") {
+    
+    if (categoria != null) {
         obtenerFrase(categoria);
     } else {
         obtenerFraseRandom()
     }
-    
 }
 
 cargarCategorias()
@@ -42,7 +41,7 @@ export async function obtenerFraseRandom() {
         const response = await fetch(apiURLrandom);
         
         if (!response.ok) {
-            throw new Error('No se pudo generar una frase de la categoría ${nomCategoria}');
+            throw new Error('No se pudo generar una frase');
         }
 
         const data = await response.json();

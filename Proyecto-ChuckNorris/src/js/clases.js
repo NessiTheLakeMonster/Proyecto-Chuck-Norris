@@ -5,7 +5,8 @@ export class Categoria {
 }
 
 export class Frase {
-    constructor(nombre) {
+    constructor(categoria, nombre) {
+        this.categoria = categoria;
         this.nombre = nombre;
     }
 }
